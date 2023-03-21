@@ -1,0 +1,36 @@
+<!-- <p>home works!</p> -->
+
+<h2>Nova Tarefa</h2>
+
+<form [formGroup]="myForm" (ngSubmit)="criarTarefa()">
+    <label>
+        Título:
+        <input type="text" name="titulo" formControlName="titulo">
+    </label>
+    <button type="submit">Adicionar</button>
+</form>
+
+
+<hr>
+<hr>
+
+<h2>Tarefas</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Concluída</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let tarefa of tarefas">
+            <td>{{ tarefa?.titulo }}</td>
+            <td>{{ tarefa?.concluida ? 'Sim' : 'Não' }}</td>
+            <td>
+                <button (click)="editarTarefa(tarefa)">Editar</button>
+                <button (click)="excluirTarefa(tarefa)">Excluir</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
